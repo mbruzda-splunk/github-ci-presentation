@@ -27,7 +27,7 @@ jobs:
           poetry install
 
       - name: run small-tests
-        run: pytest -s -v tests/small
+        run: poetry pytest -s -v tests/small
 
   large-tests:
     runs-on: ubuntu-latest
@@ -41,4 +41,4 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           poetry install
       - name: run large-tests
-        run: pytest -s -v tests/large
+        run: poetry pytest -s -v tests/large
