@@ -20,4 +20,15 @@ employee_8 = Employee("Gary", "8", Department(IT), Location(SF))
 employee_9 = Employee("Martin", "9", Department(IT), Location(SF))
 
 schedule_trainings(
-    [employee_1, employee_2, employee_3, employee_4, employee_5, employee_6, employee_7, employee_8, employee_9])
+    [
+        employee_1,
+        employee_2,
+        employee_3,
+        employee_4,
+        employee_5,
+        employee_6,
+        employee_7,
+        employee_8,
+        employee_9,
+    ]
+)
