@@ -15,7 +15,6 @@ setup(
         "pyyaml",
         "pytest",
         "pytest-cov",
-        f"pytest-splunk @ git+https://{GH_USER}:{GH_TOKEN}@github.com/uoboda-splunk/pytest-splunk.git@main",
     ],
     package_data={"": ["departments/*yaml", "locations/*.yaml"]},
     include_package_data=True,
