@@ -32,6 +32,7 @@ def employee(request):
 
     yield func
 
+
 @pytest.fixture(params=["error", "000", 111, [1, 2, 3]])
 def base_employee_data(request):
     """

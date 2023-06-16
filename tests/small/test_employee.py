@@ -17,7 +17,7 @@ class TestEmployee:
     @pytest.mark.parametrize(
         "name, nick",
         [("John", "Johnny"), ("Mark", "Mark"), ("Paul", "Paul")],
-        ids=["case1", "case2", "case2"]
+        ids=["case1", "case2", "case2"],
     )
     def test_get_nick(self, employee, name, nick):
         assert employee(name=name).get_nick() == nick
