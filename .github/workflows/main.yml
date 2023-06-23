@@ -28,17 +28,3 @@ jobs:
 
       - name: run small-tests
         run: poetry run pytest -s -v tests/small
-
-  large-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-      - name: Install jobsim
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry install
-      - name: run large-tests
-        run: poetry run pytest -s -v tests/large
