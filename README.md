@@ -42,7 +42,7 @@ GitHub documentation: https://docs.github.com/en/actions/using-workflows/manuall
 
 ## 2. Make main workflow green
 As you may notice `report_jobs_results` job is failing after forking the repo. This is because missing actions secrets,
-which are used for job execution. Please set secrets in `Settings` -> `Secrets and variables` -> `Actions` You need to specify two secrets:
+which are used for job execution. Please set secrets in `Settings` -> `Secrets and variables` -> `Actions` You need to specify these secrets:
 `SPLUNK HOST`
 `SPLUNK_TOKEN`
 
