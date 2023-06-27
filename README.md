@@ -96,4 +96,12 @@ Try to use action `haya14busa/action-update-semver` to update shorter tags like 
 This task is optional. We will present how to make a PyPI release. If you have a PyPI account you can do it as well, but it is not required by next tasks. Can we upload package with the same name?
 
 ## 8. Reusable workflow
+GitHub allows to create workflows which can be reused in many repositories. We prepared workflow which lists PRs and issues for repository - https://github.com/kkania-splunk/gh-monitor-workflow
+Use this worfklow in your repository. Examine logs from GitHub runs
+
+GitHub documentation: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+
+Make a fork of reusable workflow and modify action to fail if there are any open issues. In the next step try to make this behaviour configurable.
+This can be done by adding input to the workflow, which determines if we should fail or proceed always
+
 ## 9. Creating your own action
