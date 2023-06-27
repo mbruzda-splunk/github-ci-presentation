@@ -68,6 +68,32 @@ Modify your test jobs to create JUnit logs, store those logs as artifacts.
 GitHub documentation: https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
 pytest documentation: https://docs.pytest.org/en/6.2.x/usage.html#creating-junitxml-format-files
 
-Please notice that `large-tests` are failing and you need to add some logic because of this. By default, job stops execution after failed step
+Please notice that `large-tests` are failing, and you need to add some logic because of this. By default, job stops execution after failed step
 
 GitHub documentation: https://docs.pytest.org/en/6.2.x/usage.html#creating-junitxml-format-files
+
+## 5. Matrix strategy
+In our workflow we are using action `actions/setup-python` to setup Python 3.9 for test jobs. We would like to check if our library is also
+working without problems with Python versions 3.10 and 3.11. Please modify workflow to run tests also with these versions.
+Hint: you don't need to create new jobs. Try parametrization with matrix strategy
+
+GitHub documentation: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+
+Please remember that we need to have JUnit logs from every execution (3.9, 3.10, 3.11 Python versions) Some parametrization here might also be needed
+
+Can you combine small and large tests in one job definition with parametrization? Or even further one job definition, but
+small tests should be run with all Python versions, but large tests only with 3.9 and 3.10?
+
+## 6. Semantic Release
+Please familiarize with .releaserc file as it is crucial for release process. Use action https://github.com/splunk/semantic-release-action to incorporates release process in your pipeline.
+Try to use conventional commits syntax to create few releases.
+
+Conventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
+
+Try to use action `haya14busa/action-update-semver` to update shorter tags like v1 v1.1 https://github.com/haya14busa/action-update-semver
+
+## 7. PyPI release
+This task is optional. We will present how to make a PyPI release. If you have a PyPI account you can do it as well, but it is not required by next tasks. Can we upload package with the same name?
+
+## 8. Reusable workflow
+## 9. Creating your own action
