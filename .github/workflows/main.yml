@@ -29,17 +29,12 @@ jobs:
       - name: run small-tests
         run: poetry run pytest -s -v tests/small
 
-  report_jobs_results:
+  report_workflow:
     runs-on: ubuntu-latest
-    needs:
-      - pre-commit
-      - small-tests
+    needs: small-tests
     steps:
-      - uses: uoboda-splunk/workflow-info-splunk-upload-action@v1
+      - uses: uoboda-splunk/workflow-info-splunk-upload-action@v1.0.0
         with:
-          repository: ${{ github.repository }}
-          run_id: ${{ github.run_id }}
-          user: ${{ github.actor }}
           splunk_host: ${{ secrets.SPLUNK_HOST }}
           splunk_token: ${{ secrets.SPLUNK_TOKEN }}
         env:
