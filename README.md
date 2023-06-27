@@ -61,3 +61,13 @@ Modify needs parameter for `report_jobs_results`, as this job must be ran as the
 GitHub documentation: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idneeds
 
 In context of `needs` parameter think about different job hierarchy in our project. You can also add `needs` to `pre-commit`, `small-tests`, `large-tests` jobs. What would be the best job dependency tree?
+
+## 4. Adding artifacts
+Modify your test jobs to create JUnit logs, store those logs as artifacts.
+
+GitHub documentation: https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
+pytest documentation: https://docs.pytest.org/en/6.2.x/usage.html#creating-junitxml-format-files
+
+Please notice that `large-tests` are failing and you need to add some logic because of this. By default, job stops execution after failed step
+
+GitHub documentation: https://docs.pytest.org/en/6.2.x/usage.html#creating-junitxml-format-files
