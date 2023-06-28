@@ -32,12 +32,12 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           poetry install
       - name: run small-tests
-        run: poetry run pytest -s -v --junitxml=${{ tests }}_report_${{ version }}.xml tests/small
+        run: poetry run pytest -s -v --junitxml=${{ matrix.tests }}_report_${{ matrix.version }}.xml tests/small
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ tests }}_report_${{ version }}
-          path: ${{ tests }}_report_${{ version }}.xml
+          name: ${{ matrix.tests }}_report_${{ matrix.version }}
+          path: ${{ matrix.tests }}_report_${{ matrix.version }}.xml
 
 
   report_workflow:
