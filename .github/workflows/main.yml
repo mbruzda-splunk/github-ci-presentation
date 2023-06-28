@@ -29,15 +29,13 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           poetry install
-
       - name: run small-tests
         run: poetry run pytest -s -v --junitxml=small_report.xml tests/small
-      
       - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
-      with:
-        name: small_report
-        path: small_report.xml
+        uses: actions/upload-artifact@v3
+        with:
+          name: small_report
+          path: small_report.xml
 
 
   large-tests:
@@ -54,15 +52,13 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           poetry install
-
       - name: run small-tests
         run: poetry run pytest -s -v --junitxml=large_report.xml tests/large
-
       - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
-      with:
-        name: large_report
-        path: large_report.xml
+        uses: actions/upload-artifact@v3
+        with:
+          name: large_report
+          path: large_report.xml
 
 
   report_workflow:
