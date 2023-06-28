@@ -16,12 +16,15 @@ jobs:
       - uses: pre-commit/action@v3.0.0
 
   small-tests:
+    strategy:
+      matrix:
+        version: ["3.9", "3.10", "3.11"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: ${{ matrix.version }}
       - name: Install jobsim
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
@@ -32,12 +35,15 @@ jobs:
 
 
   large-tests:
+    strategy:
+    matrix:
+      version: ["3.9", "3.10", "3.11"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: ${{ matrix.version }}
       - name: Install jobsim
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
