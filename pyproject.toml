@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jobsim"
-version = "1.2.6"
+version = "1.0.0"
 description = "job manager simulator"
 authors = ["Lukasz Loboda <uoboda@splunk.com>, Kamil Kania <kkania@splunk.com>"]
 license = "Apache-2.0"
