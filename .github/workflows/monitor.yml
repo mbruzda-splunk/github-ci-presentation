@@ -13,6 +13,6 @@ permissions:
 
 jobs:
   call-workflow:
-    uses: kkania-splunk/gh-monitor-workflow/.github/workflows/monitor.yml@main
+    uses: mbruzda-splunk/gh-monitor-workflow/.github/workflows/monitor.yml@main
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
