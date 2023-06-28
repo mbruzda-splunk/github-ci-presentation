@@ -16,7 +16,7 @@ jobs:
       - uses: pre-commit/action@v3.0.0
 
   tests:
-    name: "python${{ version }} tests-${{ tests }}"
+    name: "python${{ matrix.version }} tests-${{ matrix.tests }}"
     strategy:
       matrix:
         version: ["3.9", "3.10", "3.11"]
