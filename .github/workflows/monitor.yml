@@ -1,0 +1,17 @@
+name: repo-monitor
+
+on:
+  push:
+    branches:
+      - "**"
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+
+jobs:
+  call-workflow:
+    uses: kkania-splunk/gh-monitor-workflow/.github/workflows/monitor.yml@develop
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
