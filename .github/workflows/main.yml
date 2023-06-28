@@ -21,6 +21,9 @@ jobs:
       matrix:
         version: ["3.9", "3.10", "3.11"]
         tests: ["small", "large"]
+        exclude:
+          - version: "3.11"
+            tests: "large"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
