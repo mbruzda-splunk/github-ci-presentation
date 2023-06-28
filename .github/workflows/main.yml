@@ -15,10 +15,12 @@ jobs:
           python-version: "3.9"
       - uses: pre-commit/action@v3.0.0
 
-  small-tests:
+  tests:
+    name: "python${{ version }} tests-${{ tests }}"
     strategy:
       matrix:
         version: ["3.9", "3.10", "3.11"]
+        tests: ["small", "large"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -30,35 +32,12 @@ jobs:
           curl -sSL https://install.python-poetry.org | python3 -
           poetry install
       - name: run small-tests
-        run: poetry run pytest -s -v --junitxml=small_report.xml tests/small
+        run: poetry run pytest -s -v --junitxml=${{ tests }}_report_${{ version }}.xml tests/small
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
-          name: small_report
-          path: small_report.xml
-
-
-  large-tests:
-    strategy:
-      matrix:
-        version: ["3.9", "3.10", "3.11"]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.version }}
-      - name: Install jobsim
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry install
-      - name: run small-tests
-        run: poetry run pytest -s -v --junitxml=large_report.xml tests/large
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: large_report
-          path: large_report.xml
+          name: ${{ tests }}_report_${{ version }}
+          path: ${{ tests }}_report_${{ version }}.xml
 
 
   report_workflow:
