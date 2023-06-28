@@ -31,7 +31,7 @@ jobs:
           poetry install
 
       - name: run small-tests
-        run: poetry run pytest -s -v tests/small
+        run: poetry run pytest -s -v --junitxml=path tests/small
 
 
   large-tests:
