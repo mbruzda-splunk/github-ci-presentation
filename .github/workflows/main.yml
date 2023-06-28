@@ -18,8 +18,8 @@ jobs:
   tests:
     name: "python${{ matrix.version }} tests-${{ matrix.tests }}"
     strategy:
+      fail-fast: false
       matrix:
-        fail-fast: false
         version: ["3.9", "3.10", "3.11"]
         tests: ["small", "large"]
         exclude:
