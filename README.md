@@ -23,6 +23,110 @@ Spawn a poetry shell
 poetry shell
 ```
 
+# Project description
+jobsim library is designed to be a simple workplace manager. For now it allows to register new employees and schedule introduction trainings for them. Different departments and locations can be defined in jobsim\departments and jobsim\locations directories respectively. After assigning the employee to its deaprtment and location trainings can be scheduled.
+
+The example.py file in jobsim repo contains an example how the library can be used
+
+```python
+from jobsim.employee import Employee
+from jobsim.location import Location
+from jobsim.department import Department
+from jobsim.trainings_scheduler import schedule_trainings
+
+IT = "it"
+FINANCE = "finance"
+SF = "San_francisco"
+KRK = "Krakow"
+SYD = "Sydney"
+
+employee_1 = Employee("Jackie", "1", Department(IT), Location(SF))
+employee_2 = Employee("Molly", "2", Department(FINANCE), Location(SF))
+employee_3 = Employee("Mark", "3", Department(IT), Location(KRK))
+employee_4 = Employee("John", "4", Department(IT), Location(SYD))
+employee_5 = Employee("Bob", "5", Department(FINANCE), Location(SYD))
+employee_6 = Employee("Andrew", "6", Department(FINANCE), Location(KRK))
+employee_7 = Employee("Tom", "7", Department(FINANCE), Location(SYD))
+employee_8 = Employee("Gary", "8", Department(IT), Location(SF))
+employee_9 = Employee("Martin", "9", Department(IT), Location(SF))
+
+schedule_trainings(
+    [
+        employee_1,
+        employee_2,
+        employee_3,
+        employee_4,
+        employee_5,
+        employee_6,
+        employee_7,
+        employee_8,
+        employee_9,
+    ]
+)
+```
+
+To run example:
+
+```
+python example.py
+```
+
+Output:
+```
+Jackie is a new employee in San_francisco 🇺🇸
+Jackie is joining IT department 💻
+Molly is a new employee in San_francisco 🇺🇸
+Molly is joining FINANCE department 💵
+Mark is a new employee in Krakow 🇵🇱
+Mark is joining IT department 💻
+John is a new employee in Sydney 🇦🇺
+John is joining IT department 💻
+Bob is a new employee in Sydney 🇦🇺
+Bob is joining FINANCE department 💵
+Andrew is a new employee in Krakow 🇵🇱
+Andrew is joining FINANCE department 💵
+Tom is a new employee in Sydney 🇦🇺
+Tom is joining FINANCE department 💵
+Gary is a new employee in San_francisco 🇺🇸
+Gary is joining IT department 💻
+Martin is a new employee in San_francisco 🇺🇸
+Martin is joining IT department 💻
+
+----------------- Required trainings -----------------
+
+Required trainings for Jackie: security_team, hr_intro, health_training,
+Required trainings for Molly: law_team, hr_intro, health_training,
+Required trainings for Mark: security_team, hr_intro, health_training,
+Required trainings for John: security_team, hr_intro, health_training,
+Required trainings for Bob: law_team, hr_intro, health_training,
+Required trainings for Andrew: law_team, hr_intro, health_training,
+Required trainings for Tom: law_team, hr_intro, health_training,
+Required trainings for Gary: security_team, hr_intro, health_training,
+Required trainings for Martin: security_team, hr_intro, health_training,
+
+----------------- Scheduled trainings -----------------
+
+Trainings for Jackie: security_team miami Tue 9-17, hr_intro las_vegas Fri 8-10, health_training chicago Fri 9-14,
+Trainings for Molly: law_team boston Wed 7-12, hr_intro las_vegas Fri 8-10, health_training chicago Fri 9-14,
+Trainings for Mark: security_team warsaw Mon 9-17, hr_intro rzeszow Mon 8-10, health_training warsaw Fri 8-13,
+Trainings for John: security_team melbourne Wed 9-17, hr_intro melbourne Mon 9-11, health_training perth Mon 10-15,
+Trainings for Bob: law_team perth Fri 11-16, hr_intro melbourne Mon 9-11, health_training perth Mon 10-15,
+Trainings for Andrew: hr_intro rzeszow Mon 8-10, health_training warsaw Fri 8-13,
+Trainings for Tom: law_team perth Fri 11-16, hr_intro melbourne Mon 9-11, health_training perth Mon 10-15,
+Trainings for Gary: security_team miami Tue 9-17, hr_intro las_vegas Fri 8-10, health_training chicago Fri 9-14,
+Trainings for Martin: security_team miami Tue 9-17, hr_intro las_vegas Fri 8-10, health_training chicago Fri 9-14,
+```
+
+To run small tests:
+```
+python -m pytest -v tests/small
+```
+
+To run large tests:
+```
+python -m pytest -v tests/large
+```
+
 # Tasks
 
 ## 1. Prepare your copy of workshop repository
@@ -42,7 +146,7 @@ GitHub documentation: https://docs.github.com/en/actions/using-workflows/manuall
 
 ## 2. Make main workflow green
 As you may notice `report_jobs_results` job is failing after forking the repo. This is because missing actions secrets,
-which are used for job execution. Please set secrets in `Settings` -> `Secrets and variables` -> `Actions` You need to specify these secrets:
+which are used for job execution. Please set secrets in `Settings` -> `Secrets and variables` -> `Actions` You need to specify two secrets:
 `SPLUNK HOST`
 `SPLUNK_TOKEN`
 
