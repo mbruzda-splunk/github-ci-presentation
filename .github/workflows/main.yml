@@ -36,8 +36,8 @@ jobs:
 
   large-tests:
     strategy:
-    matrix:
-      version: ["3.9", "3.10", "3.11"]
+      matrix:
+        version: ["3.9", "3.10", "3.11"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
