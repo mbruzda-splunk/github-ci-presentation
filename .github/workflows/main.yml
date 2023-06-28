@@ -44,8 +44,7 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     needs: 
-     - small-tests
-     - large-tests
+      - tests
     steps:
       - uses: uoboda-splunk/workflow-info-splunk-upload-action@v1.0
         with:
