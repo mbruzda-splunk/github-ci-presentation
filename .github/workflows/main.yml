@@ -57,3 +57,23 @@ jobs:
           splunk_token: ${{ secrets.SPLUNK_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+      - name: Semantic release
+        id: semantic
+        uses: splunk/semantic-release-action@v1.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          extra_plugins: |
+            @google/semantic-release-replace-plugin
+
