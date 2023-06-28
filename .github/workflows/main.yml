@@ -31,7 +31,7 @@ jobs:
         run: poetry run pytest -s -v tests/small
 
 
-    large-tests:
+  large-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
