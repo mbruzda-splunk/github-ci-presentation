@@ -38,6 +38,7 @@ jobs:
         run: poetry run pytest -s -v --junitxml=${{ matrix.tests }}_report_${{ matrix.version }}.xml tests/small
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: ${{ matrix.tests }}_report_${{ matrix.version }}
           path: ${{ matrix.tests }}_report_${{ matrix.version }}.xml
